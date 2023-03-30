@@ -6,7 +6,7 @@ const AddNewContact = () => {
     <div className="p-4 flex flex-col gap-y-2 items-center">
       <h3 className="font-bold text-neutral-300">Add A New Contact</h3>
       <form className="flex flex-col gap-y-2 items-center">
-        <div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-4">
+        <div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-4 text-slate-900">
           <Input type="text" placeholder="Name..." />
           <Input type="email" placeholder="Email..." />
           <Input type="tel" placeholder="Phone..." />

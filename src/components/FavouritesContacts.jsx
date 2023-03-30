@@ -3,9 +3,16 @@ import Contact from "./ui/Contact";
 
 const FavouritesContacts = () => {
   return (
-    <div className="flex flex-col items-center gap-y-4">
+    <div className="my-2 flex flex-col items-center gap-y-4">
       <h3 className="font-bold text-neutral-300">Favourites</h3>
-      <Contact />
+      <div className="lg:flex lg:flex-row lg:flex-wrap lg:gap-4 lg:px-28">
+        <Contact />
+        <Contact />
+        <Contact />
+        <Contact />
+        <Contact />
+        <Contact />
+      </div>
     </div>
   );
 };

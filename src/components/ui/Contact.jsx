@@ -3,11 +3,16 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="p-2 flex flex-row items-center gap-x-2 content-start border border-slate-100 rounded-xl">
+    <div className="mb-2 p-2 flex flex-row items-center gap-x-2 content-start border border-slate-100 rounded-xl md:gap-x-6">
       <div className="flex h-10">
-        <img
-          src="https://ui-avatars.com/api/?name=nirjhar+joshi"
+        <Image
+          loader={({ src }) =>
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(src)}`
+          }
+          src="nirjhar joshi"
           alt="user image"
+          width={50}
+          height={50}
         />
       </div>
       <div>

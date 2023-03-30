@@ -22,7 +22,7 @@ export default function Home() {
       </Head>
       <main>
         <Header />
-        <div className="border-2 border-orange-500 flex flex-col gap-y-4 items-center p-2 min-h-screen">
+        <div className="flex flex-col gap-y-4 items-center p-2 min-h-screen">
           <div className="flex flex-row gap-x-2">
             <div className="col-span-1 row-span-1 max-h-fit justify-self-end">
               <AddRandomContact />
@@ -37,7 +37,7 @@ export default function Home() {
           <div className="w-full bg-gray-600 rounded-md md:w-1/2 lg:w-3/4">
             <FavouritesContacts />
           </div>
-          <div className="w-full bg-gray-800 rounded-md md:w-1/2 lg:w-3/4">
+          <div className="w-full bg-slate-800 rounded-md md:w-1/2 lg:w-3/4">
             <GeneralContacts />
           </div>
         </div>
