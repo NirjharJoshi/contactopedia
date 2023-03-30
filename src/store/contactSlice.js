@@ -7,28 +7,28 @@ const initialState = {
       name: "Priyanka Mehta",
       phone: "+91-9876543210",
       email: "priyanka.mehta@example.com",
-      isFavourite: true,
+      isFavourite: false,
     },
     {
       id: "3ec822d3-51c7-4449-b1e2-2c6af1f6d2c6",
       name: "Akash Patel",
       phone: "+91-8765432109",
       email: "akash.patel@example.com",
-      isFavourite: false,
+      isFavourite: true,
     },
     {
       id: "50cb6abf-452c-42b7-a81c-9e6de1d57f6b",
       name: "Vidya Gupta",
       phone: "+91-7654321098",
       email: "vidya.gupta@example.com",
-      isFavourite: true,
+      isFavourite: false,
     },
     {
       id: "d29c4610-8e3d-447c-aef7-6e9c5592f2b1",
       name: "Anmol Singh",
       phone: "+91-6543210987",
       email: "anmol.singh@example.com",
-      isFavourite: false,
+      isFavourite: true,
     },
     {
       id: "c6d3572d-876c-460a-a6f9-e6d11af6e9b6",
@@ -59,6 +59,7 @@ const initialState = {
       isFavourite: false,
     },
   ],
+  editContact: null,
 };
 
 const contactsSlice = createSlice({
@@ -66,7 +67,38 @@ const contactsSlice = createSlice({
   initialState,
   reducers: {
     addNewContact(state, action) {
-      state.contacts.push(action.newContact);
+      let index = state.contacts.findIndex(
+        (contact) => contact.id === action.payload.id
+      );
+
+      if (index !== -1) {
+        state.contacts[index] = action.payload;
+        state.editContact = null;
+      } else {
+        state.contacts.push(action.payload);
+      }
+    },
+    handleFavorite(state, action) {
+      state.contacts.forEach((contact) => {
+        if (contact.id === action.payload) {
+          contact.isFavourite = !contact.isFavourite;
+          return;
+        }
+      });
+    },
+    handleDeleteContact(state, action) {
+      state.contacts = state.contacts.filter(
+        (contact) => contact.id !== action.payload
+      );
+    },
+    handleRemoveAllContact(state, action) {
+      state.contacts = [];
+    },
+    handleEditContact(state, action) {
+      console.log(action.payload);
+      state.editContact = state.contacts.find(
+        (contact) => contact.id === action.payload
+      );
     },
   },
 });
