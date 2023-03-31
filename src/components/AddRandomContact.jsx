@@ -2,6 +2,10 @@ import { contactsAction } from "@/store/contactSlice";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import Button from "./base/element/Button";
+
+const buttonRandomContactStyles =
+  "p-1 text-sm font-semibold rounded-lg bg-green-600 md:px-4 md:text-base hover:bg-green-900";
 
 const AddRandomContact = () => {
   const dispatch = useDispatch();
@@ -25,12 +29,15 @@ const AddRandomContact = () => {
   };
 
   return (
-    <button
-      className="p-1 text-sm font-semibold rounded-lg bg-green-600 md:px-4 md:text-base hover:bg-green-900"
-      onClick={handleRandomContact}
-    >
+    <Button className={buttonRandomContactStyles} onClick={handleRandomContact}>
       Add Random Contact
-    </button>
+    </Button>
+    // <button
+    //   className="p-1 text-sm font-semibold rounded-lg bg-green-600 md:px-4 md:text-base hover:bg-green-900"
+    //   onClick={handleRandomContact}
+    // >
+    //   Add Random Contact
+    // </button>
   );
 };
 

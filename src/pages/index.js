@@ -8,8 +8,16 @@ import RemoveAllContacts from "@/components/RemoveAllContacts";
 import AddNewContact from "@/components/AddNewContact";
 import FavouritesContacts from "@/components/FavouritesContacts";
 import GeneralContacts from "@/components/GeneralContacts";
+import ContactsContainer from "@/components/base/wrapper/ContactsContainer";
+import FormContainer from "@/components/base/wrapper/FormContainer";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const contactFavouriteStyles =
+  "w-full bg-gray-600 rounded-md md:w-1/2 lg:w-3/4";
+const contactGeneralStyles = "w-full bg-slate-800 rounded-md md:w-1/2 lg:w-3/4";
+const FormStyles =
+  "w-full border-2 border-slate-200 rounded-md md:w-1/2 lg:w-3/4";
 
 export default function Home() {
   return (
@@ -24,22 +32,22 @@ export default function Home() {
         <Header />
         <div className="flex flex-col gap-y-4 items-center p-2 min-h-screen">
           <div className="flex flex-row gap-x-2">
-            <div className="col-span-1 row-span-1 max-h-fit justify-self-end">
+            <div className="justify-self-end">
               <AddRandomContact />
             </div>
-            <div className="col-span-1 row-span-1  justify-self-start">
+            <div className="justify-self-start">
               <RemoveAllContacts />
             </div>
           </div>
-          <div className="w-full border-2 border-slate-200 rounded-md md:w-1/2 lg:w-3/4">
+          <FormContainer className={FormStyles}>
             <AddNewContact />
-          </div>
-          <div className="w-full bg-gray-600 rounded-md md:w-1/2 lg:w-3/4">
+          </FormContainer>
+          <ContactsContainer className={contactFavouriteStyles}>
             <FavouritesContacts />
-          </div>
-          <div className="w-full bg-slate-800 rounded-md md:w-1/2 lg:w-3/4">
+          </ContactsContainer>
+          <ContactsContainer className={contactGeneralStyles}>
             <GeneralContacts />
-          </div>
+          </ContactsContainer>
         </div>
         <Footer />
       </main>

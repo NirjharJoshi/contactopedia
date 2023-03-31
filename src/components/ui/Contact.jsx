@@ -1,10 +1,34 @@
 import Image from "next/image";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import { contactsAction } from "../../store/contactSlice";
+import Button from "../base/element/Button";
+
+const buttonIsFavouriteStyles = "p-1 rounded-md bg-yellow-400 text-slate-950";
+const buttonIsGeneralStyles =
+  "p-1 rounded-md text-yellow-400 bg-slate-950 border border-yellow-400";
+const buttonEditStyles = "my-1 p-1 rounded-md bg-blue-600";
+const buttonDeleteStyles = "p-1 rounded-md bg-red-600";
 
 const Contact = ({ id, name, email, phone, isFavourite }) => {
   const dispatch = useDispatch();
+
+  const handleToggeleFavourite = (id) => {
+    dispatch(contactsAction.handleFavorite(id));
+  };
+  const handleEditContact = (id) => {
+    window.scrollTo(0, 0);
+    dispatch(contactsAction.handleEditContact(id));
+  };
+  const handleDeleteContact = (id) => {
+    dispatch(contactsAction.handleDeleteContact(id));
+    toast.success("Contact Deleted");
+  };
+
+  const conditionalStyle = isFavourite
+    ? buttonIsFavouriteStyles
+    : buttonIsGeneralStyles;
 
   return (
     <div
@@ -28,28 +52,24 @@ const Contact = ({ id, name, email, phone, isFavourite }) => {
         <h5 className="text-sm text-slate-100">{phone}</h5>
       </div>
       <div className="flex flex-col text-xs">
-        <button
-          className={`p-1 rounded-md ${
-            isFavourite
-              ? "bg-yellow-400 text-slate-950"
-              : "text-yellow-400 bg-slate-950 border border-yellow-400"
-          } `}
-          onClick={() => dispatch(contactsAction.handleFavorite(id))}
+        <Button
+          className={conditionalStyle}
+          onClick={handleToggeleFavourite.bind(null, id)}
         >
           <i className="fa-regular fa-star"></i>
-        </button>
-        <button
-          className="my-1 p-1 rounded-md bg-blue-600"
-          onClick={() => dispatch(contactsAction.handleEditContact(id))}
+        </Button>
+        <Button
+          className={buttonEditStyles}
+          onClick={handleEditContact.bind(null, id)}
         >
           <i className="fa-regular fa-pen-to-square"></i>
-        </button>
-        <button
-          className="p-1 rounded-md bg-red-600"
-          onClick={() => dispatch(contactsAction.handleDeleteContact(id))}
+        </Button>
+        <Button
+          className={buttonDeleteStyles}
+          onClick={handleDeleteContact.bind(null, id)}
         >
           <i className="fa-regular fa-trash-can"></i>
-        </button>
+        </Button>
       </div>
     </div>
   );

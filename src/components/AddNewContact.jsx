@@ -3,8 +3,13 @@ import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import Button from "./base/element/Button";
 
-import Input from "./ui/Input";
+import Input from "./base/element/Input";
+
+const inputStyles = "rounded-md px-2 py-1 placeholder-slate-400";
+const buttonCreateStyles =
+  "w-full py-1 rounded-md bg-blue-600 font-semibold hover:bg-blue-900 lg:w-3/4";
 
 const AddNewContact = () => {
   const { editContact } = useSelector((state) => state.contactsState);
@@ -57,13 +62,28 @@ const AddNewContact = () => {
         className="flex flex-col gap-y-2 items-center"
       >
         <div className="flex flex-col gap-y-2 lg:flex-row lg:gap-x-4 text-slate-900">
-          <Input ref={nameInputRef} type="text" placeholder="Name..." />
-          <Input ref={emailInputRef} type="email" placeholder="Email..." />
-          <Input ref={phoneInputRef} type="tel" placeholder="Phone..." />
+          <Input
+            className={inputStyles}
+            ref={nameInputRef}
+            type="text"
+            placeholder="Name..."
+          />
+          <Input
+            className={inputStyles}
+            ref={emailInputRef}
+            type="email"
+            placeholder="Email..."
+          />
+          <Input
+            className={inputStyles}
+            ref={phoneInputRef}
+            type="tel"
+            placeholder="Phone..."
+          />
         </div>
-        <button className="w-full py-1 rounded-md bg-blue-600 font-semibold hover:bg-blue-900 lg:w-3/4">
+        <Button className={buttonCreateStyles} type="submit">
           Create
-        </button>
+        </Button>
       </form>
     </div>
   );

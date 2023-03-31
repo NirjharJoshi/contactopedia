@@ -18,7 +18,7 @@ const GeneralContacts = () => {
     ));
 
   return (
-    <div className="my-2 flex flex-col items-center gap-y-4">
+    <div className="my-2 px-4 flex flex-col items-center gap-y-4">
       <h3 className="font-bold text-neutral-300">General Contacts</h3>
       <div className="lg:flex lg:flex-row lg:flex-wrap lg:gap-4 lg:justify-center lg:flex-grow">
         {list}
