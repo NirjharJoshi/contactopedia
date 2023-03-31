@@ -15,12 +15,19 @@ const AddRandomContact = () => {
     const data = await res.json();
     const user = data.results[0];
 
+    const userPhone = user.phone.split("-").join("");
+
     dispatch(
       contactsAction.addRandomContact({
         id: user.login.uuid,
         name: `${user.name.first} ${user.name.last}`,
         email: user.email,
-        phone: user.phone,
+        phone:
+          "+91-" +
+          user.phone
+            .split(/[a-zA-Z()-]+/)
+            .join("")
+            .padEnd(10, "0"),
         isFavourite: false,
       })
     );
