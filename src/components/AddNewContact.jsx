@@ -29,9 +29,10 @@ const AddNewContact = () => {
       !emailInputRef.current.value ||
       !phoneInputRef.current.value
     )
-      return toast.error("Please provide valid input", {
+      return toast.error("Please Provide Valid Input", {
         position: "top-center",
       });
+    const isNew = !Boolean(editContact.id);
     const newContact = {
       id: editContact.id || uuidv4(),
       name: nameInputRef.current.value,
@@ -45,7 +46,7 @@ const AddNewContact = () => {
     emailInputRef.current.value = "";
     phoneInputRef.current.value = "";
 
-    toast.success("New Contact Added");
+    toast.success(isNew ? "New Contact Added" : "Contact Updated Successfully");
   };
 
   return (

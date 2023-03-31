@@ -87,7 +87,7 @@ const contactsSlice = createSlice({
           isFavourite: "",
         };
       } else {
-        state.contacts.push(action.payload);
+        state.contacts.unshift(action.payload);
       }
     },
     handleFavorite(state, action) {
@@ -112,7 +112,7 @@ const contactsSlice = createSlice({
       );
     },
     addRandomContact(state, action) {
-      state.contacts.push(action.payload);
+      state.contacts.unshift(action.payload);
     },
   },
 });

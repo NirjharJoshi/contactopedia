@@ -21,7 +21,7 @@ const AddRandomContact = () => {
       })
     );
 
-    toast.success("Random user added");
+    toast.success("Random Contact Added");
   };
 
   return (
