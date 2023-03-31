@@ -59,7 +59,13 @@ const initialState = {
       isFavourite: false,
     },
   ],
-  editContact: null,
+  editContact: {
+    id: "",
+    name: "",
+    email: "",
+    phone: "",
+    isFavourite: "",
+  },
 };
 
 const contactsSlice = createSlice({
@@ -73,7 +79,13 @@ const contactsSlice = createSlice({
 
       if (index !== -1) {
         state.contacts[index] = action.payload;
-        state.editContact = null;
+        state.editContact = {
+          id: "",
+          name: "",
+          email: "",
+          phone: "",
+          isFavourite: "",
+        };
       } else {
         state.contacts.push(action.payload);
       }
@@ -95,10 +107,12 @@ const contactsSlice = createSlice({
       state.contacts = [];
     },
     handleEditContact(state, action) {
-      console.log(action.payload);
       state.editContact = state.contacts.find(
         (contact) => contact.id === action.payload
       );
+    },
+    addRandomContact(state, action) {
+      state.contacts.push(action.payload);
     },
   },
 });
